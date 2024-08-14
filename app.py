@@ -8,7 +8,6 @@ df = pd.read_csv('data.csv')
 df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 
 app = Dash(__name__)
-server = app.server
 
 # Custom CSS
 custom_css = '''
@@ -196,5 +195,7 @@ def update_figure(selected_make, selected_model):
     
     return fig
 
+server = app.server
+
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug = True)
