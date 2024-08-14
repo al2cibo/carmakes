@@ -3,6 +3,9 @@ import plotly.graph_objects as go
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
+app = Dash(__name__)
+server = app.server
+
 # Load data
 df = pd.read_csv('data.csv')
 df['Year'] = pd.to_datetime(df['Year'], format='%Y')
@@ -195,5 +198,4 @@ def update_figure(selected_make, selected_model):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
-    server = app.server
+    app.run_server()
