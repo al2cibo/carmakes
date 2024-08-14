@@ -3,12 +3,12 @@ import plotly.graph_objects as go
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-app = Dash(__name__)
-server = app.server
-
 # Load data
 df = pd.read_csv('data.csv')
 df['Year'] = pd.to_datetime(df['Year'], format='%Y')
+
+app = Dash(__name__)
+server = app.server
 
 # Custom CSS
 custom_css = '''
@@ -141,7 +141,6 @@ def create_car_ratings_plot(df, selected_make='All', selected_model='All'):
     return fig
 
 # Create Dash app
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Define layout
 app.layout = html.Div([
